@@ -4,10 +4,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  weather-check:
+  weather:
     runs-on: ubuntu-latest
 
     steps:
+
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
@@ -17,3 +18,5 @@ jobs:
       - run: pip install requests
 
       - run: python weather_alert.py
+        env:
+          OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
